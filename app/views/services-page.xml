@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar class="action-bar">
+        <NavigationButton tap="{{ onBack }}" />
+        <Label text="{{ selectedCategory.name + ' Services' }}" style="color: white; font-size: 20; font-weight: bold;" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *" columns="*">
+        <SearchBar row="0" hint="Search services..." text="{{ searchQuery }}" 
+                  submit="{{ onSearch }}" clear="{{ onClearSearch }}"
+                  class="search-bar" />
+
+        <ListView row="1" items="{{ filteredServices }}" 
+                 itemTap="{{ onServiceSelect }}"
+                 separatorColor="transparent" backgroundColor="transparent">
+            <ListView.itemTemplate>
+                <GridLayout rows="auto" columns="*, auto" class="service-item" 
+                           backgroundColor="white">
+                    <StackLayout col="0" padding="16">
+                        <Label text="{{ name }}" 
+                               style="color: #FF6B00; font-size: 20; font-weight: bold;" />
+                        <Label text="{{ description }}" textWrap="true" 
+                               style="color: #666666; font-size: 14; margin-top: 4;" />
+                    </StackLayout>
+                    <Label col="1" text="{{ '$' + price }}"
+                           style="font-size: 20; font-weight: bold; margin-right: 16; vertical-align: center;" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

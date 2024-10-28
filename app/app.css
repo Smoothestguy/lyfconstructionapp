@@ -1,0 +1,163 @@
+.page {
+    background-color: white;
+}
+
+.auth-container {
+    padding: 20;
+    height: 100%;
+}
+
+.input-field {
+    margin: 10 0;
+    padding: 16;
+    background-color: #f5f5f5;
+    border-radius: 8;
+    height: 50;
+    font-size: 16;
+}
+
+.btn-primary {
+    height: 50;
+    margin: 20 0;
+    border-radius: 8;
+    background-color: #FF6B00;
+    color: white;
+    font-weight: bold;
+    font-size: 16;
+}
+
+.btn-secondary {
+    height: 50;
+    margin: 20 0;
+    border-radius: 8;
+    background-color: #f5f5f5;
+    color: #FF6B00;
+    font-weight: bold;
+    font-size: 16;
+}
+
+.category-card {
+    background-color: white;
+    border-radius: 12;
+    margin: 8 16;
+    elevation: 2;
+    shadow-color: #000;
+    shadow-offset: 0 2;
+    shadow-opacity: 0.25;
+    shadow-radius: 3.84;
+}
+
+.service-item {
+    background-color: white;
+    border-radius: 12;
+    margin: 8 16;
+    elevation: 2;
+    shadow-color: #000;
+    shadow-offset: 0 2;
+    shadow-opacity: 0.25;
+    shadow-radius: 3.84;
+}
+
+.action-bar {
+    background-color: #FF6B00;
+    color: white;
+    font-weight: bold;
+}
+
+.search-bar {
+    margin: 8 16;
+    background-color: #f5f5f5;
+    border-radius: 8;
+}
+
+.form {
+    width: 100%;
+    padding: 16;
+}
+
+.booking-container {
+    padding: 16;
+}
+
+.step-content {
+    margin: 16;
+}
+
+.steps-indicator {
+    margin: 16 0;
+    background-color: white;
+    border-radius: 8;
+    elevation: 1;
+}
+
+.step {
+    text-align: center;
+    opacity: 0.5;
+    padding: 12;
+}
+
+.step-active {
+    text-align: center;
+    opacity: 1;
+    color: #FF6B00;
+    font-weight: bold;
+}
+
+.quote-card {
+    background-color: white;
+    border-radius: 12;
+    margin: 8 0;
+    padding: 16;
+    elevation: 2;
+    shadow-color: #000;
+    shadow-offset: 0 2;
+    shadow-opacity: 0.25;
+    shadow-radius: 3.84;
+}
+
+.quote-item {
+    font-size: 16;
+    color: #666;
+    margin: 8 0;
+}
+
+.total-amount {
+    font-size: 24;
+    font-weight: bold;
+    color: #FF6B00;
+    margin-top: 16;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 14;
+    margin: 8 0;
+    text-align: center;
+}
+
+.section-title {
+    color: #333;
+    font-size: 20;
+    font-weight: bold;
+    margin: 16 0;
+}
+
+.segmented-bar {
+    margin: 8 0;
+    background-color: #f5f5f5;
+    selected-background-color: #FF6B00;
+}
+
+Calendar {
+    margin: 8 0;
+    background-color: white;
+    border-radius: 8;
+    elevation: 1;
+}
+
+.time-slot-list {
+    height: 150;
+    margin: 8 0;
+    background-color: white;
+    border-radius: 8;
+}

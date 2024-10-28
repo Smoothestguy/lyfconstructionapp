@@ -1,0 +1,112 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar class="action-bar">
+        <NavigationButton tap="{{ onBack }}" />
+        <Label text="Book {{ service.name }}" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *" columns="*">
+        <!-- Steps Indicator -->
+        <GridLayout row="0" columns="*, *, *, *" class="steps-indicator">
+            <StackLayout col="0" class="{{ step >= 1 ? 'step-active' : 'step' }}">
+                <Label text="Details" />
+            </StackLayout>
+            <StackLayout col="1" class="{{ step >= 2 ? 'step-active' : 'step' }}">
+                <Label text="Schedule" />
+            </StackLayout>
+            <StackLayout col="2" class="{{ step >= 3 ? 'step-active' : 'step' }}">
+                <Label text="Quote" />
+            </StackLayout>
+            <StackLayout col="3" class="{{ step >= 4 ? 'step-active' : 'step' }}">
+                <Label text="Confirm" />
+            </StackLayout>
+        </GridLayout>
+
+        <ScrollView row="1">
+            <StackLayout class="booking-container">
+                <!-- Step 1: Project Details -->
+                <StackLayout visibility="{{ step === 1 ? 'visible' : 'collapsed' }}" class="step-content">
+                    <Label text="Project Details" class="section-title" />
+                    <TextView hint="Describe your project needs..." text="{{ requirements }}"
+                             class="input-field" height="120" />
+                    
+                    <Label text="Project Area (sq ft)" class="label" />
+                    <TextField text="{{ area }}" keyboardType="number" class="input-field" />
+                    
+                    <Label text="Project Complexity" class="label" />
+                    <SegmentedBar selectedIndex="{{ complexityIndex }}" class="segmented-bar">
+                        <SegmentedBar.items>
+                            <SegmentedBarItem title="Simple" />
+                            <SegmentedBarItem title="Moderate" />
+                            <SegmentedBarItem title="Complex" />
+                        </SegmentedBar.items>
+                    </SegmentedBar>
+
+                    <Label text="Urgency" class="label" />
+                    <SegmentedBar selectedIndex="{{ urgencyIndex }}" class="segmented-bar">
+                        <SegmentedBar.items>
+                            <SegmentedBarItem title="Normal" />
+                            <SegmentedBarItem title="Urgent" />
+                        </SegmentedBar.items>
+                    </SegmentedBar>
+                </StackLayout>
+
+                <!-- Step 2: Schedule -->
+                <StackLayout visibility="{{ step === 2 ? 'visible' : 'collapsed' }}" class="step-content">
+                    <Label text="Select Date & Time" class="section-title" />
+                    <Calendar selectedDate="{{ selectedDate }}" />
+                    
+                    <Label text="Preferred Time" class="label" />
+                    <ListPicker items="{{ availableTimeSlots }}" selectedIndex="{{ selectedTimeIndex }}" 
+                               class="time-slot-list" />
+                </StackLayout>
+
+                <!-- Step 3: Quote -->
+                <StackLayout visibility="{{ step === 3 ? 'visible' : 'collapsed' }}" class="step-content">
+                    <Label text="Service Quote" class="section-title" />
+                    
+                    <StackLayout class="quote-card">
+                        <Repeater items="{{ quote.breakdown }}">
+                            <Repeater.itemTemplate>
+                                <Label text="{{ $value }}" class="quote-item" textWrap="true" />
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                        
+                        <Label text="Total: ${{ quote.total }}" class="total-amount" />
+                    </StackLayout>
+
+                    <Button text="Request Consultation" tap="{{ requestConsultation }}" 
+                            class="btn-secondary" />
+                </StackLayout>
+
+                <!-- Step 4: Confirmation -->
+                <StackLayout visibility="{{ step === 4 ? 'visible' : 'collapsed' }}" class="step-content">
+                    <Label text="Booking Summary" class="section-title" />
+                    
+                    <StackLayout class="quote-card">
+                        <Label text="{{ service.name }}" class="section-title" />
+                        <Label text="{{ 'Date: ' + formatDate(selectedDate) }}" class="quote-item" />
+                        <Label text="{{ 'Time: ' + selectedTime }}" class="quote-item" />
+                        <Label text="{{ 'Total: $' + quote.total }}" class="total-amount" />
+                    </StackLayout>
+
+                    <TextField hint="Name" text="{{ customerName }}" class="input-field" />
+                    <TextField hint="Phone" text="{{ customerPhone }}" keyboardType="phone" class="input-field" />
+                    <TextField hint="Email" text="{{ customerEmail }}" keyboardType="email" class="input-field" />
+                    <TextView hint="Additional Notes" text="{{ additionalNotes }}" class="input-field" height="100" />
+
+                    <Label text="{{ errorMessage }}" class="error-message"
+                           visibility="{{ errorMessage ? 'visible' : 'collapsed' }}" />
+                </StackLayout>
+
+                <!-- Navigation Buttons -->
+                <GridLayout columns="auto, *" class="navigation-buttons">
+                    <Button col="0" text="Back" tap="{{ onPrevious }}" class="btn-secondary"
+                            visibility="{{ step > 1 ? 'visible' : 'collapsed' }}" />
+                    <Button col="1" text="{{ step < 4 ? 'Next' : 'Confirm Booking' }}" 
+                            tap="{{ step < 4 ? 'onNext' : 'confirmBooking' }}" 
+                            class="btn-primary" />
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

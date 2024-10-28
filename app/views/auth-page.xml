@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="All in One LYF" class="action-bar" />
+    
+    <StackLayout class="auth-container" verticalAlignment="center">
+        <!-- Logo and Title -->
+        <Label text="All in One LYF" 
+               style="font-size: 32; font-weight: bold; color: #FF6B00; text-align: center; margin-bottom: 48;" />
+
+        <!-- Auth Form -->
+        <StackLayout class="form" margin="16">
+            <TextField hint="Email" text="{{ email }}" 
+                      class="input-field" keyboardType="email" 
+                      autocorrect="false" autocapitalizationType="none" />
+
+            <TextField hint="Password" text="{{ password }}" secure="true"
+                      class="input-field" />
+
+            <Label text="{{ errorMessage }}" class="error-message"
+                   visibility="{{ errorMessage ? 'visible' : 'collapsed' }}" 
+                   textWrap="true" />
+
+            <Button text="{{ isSignUp ? 'Sign Up' : 'Sign In' }}" 
+                    tap="{{ onSubmit }}" 
+                    class="btn-primary"
+                    isEnabled="{{ !isLoading }}" />
+
+            <ActivityIndicator busy="{{ isLoading }}" 
+                             visibility="{{ isLoading ? 'visible' : 'collapsed' }}" />
+
+            <Label text="{{ isSignUp ? 'Already have an account? Sign In' : 'Need an account? Sign Up' }}" 
+                   tap="{{ toggleAuthMode }}"
+                   style="color: #FF6B00; text-align: center; margin-top: 16;" />
+        </StackLayout>
+    </StackLayout>
+</Page>
